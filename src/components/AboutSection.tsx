@@ -1,32 +1,24 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Briefcase, GraduationCap, Award } from 'lucide-react';
-
 const AboutSection: React.FC = () => {
-  const experiences = [
-    {
-      company: 'British Airways',
-      position: 'Data Science Intern',
-      period: 'Virtual Experience',
-      description: 'Analyzed customer reviews to identify key factors affecting business outcomes using sentiment analysis and NLP techniques.'
-    },
-    {
-      company: 'BCG',
-      position: 'Data Science & Analytics Intern',
-      period: 'Virtual Experience',
-      description: 'Developed predictive models for customer churn and provided strategic recommendations based on data-driven insights.'
-    },
-    {
-      company: 'Accenture',
-      position: 'Data Analytics Intern',
-      period: 'Virtual Experience',
-      description: 'Processed and analyzed large datasets to identify operational efficiencies and business optimization opportunities.'
-    }
-  ];
-
-  return (
-    <section id="about" className="py-20 relative">
+  const experiences = [{
+    company: 'British Airways',
+    position: 'Data Science Intern',
+    period: 'Virtual Experience',
+    description: 'Analyzed customer reviews to identify key factors affecting business outcomes using sentiment analysis and NLP techniques.'
+  }, {
+    company: 'BCG',
+    position: 'Data Science & Analytics Intern',
+    period: 'Virtual Experience',
+    description: 'Developed predictive models for customer churn and provided strategic recommendations based on data-driven insights.'
+  }, {
+    company: 'Accenture',
+    position: 'Data Analytics Intern',
+    period: 'Virtual Experience',
+    description: 'Processed and analyzed large datasets to identify operational efficiencies and business optimization opportunities.'
+  }];
+  return <section id="about" className="py-20 relative">
       {/* Background elements */}
       <div className="absolute top-0 -right-32 w-96 h-96 bg-cyber-accent/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 -left-32 w-80 h-80 bg-cyber-pink/5 rounded-full blur-3xl"></div>
@@ -51,7 +43,7 @@ const AboutSection: React.FC = () => {
                   <div>
                     <h4 className="text-lg font-medium">Bachelor's in Computer Science</h4>
                     <p className="text-gray-400">Specialization in Data Science</p>
-                    <p className="text-sm text-gray-500">2020 - 2024</p>
+                    <p className="text-sm text-gray-500">2020 - 2027</p>
                   </div>
                 </div>
               </div>
@@ -87,8 +79,7 @@ const AboutSection: React.FC = () => {
               Work Experience
             </h3>
             
-            {experiences.map((exp, index) => (
-              <Card key={index} className="data-card">
+            {experiences.map((exp, index) => <Card key={index} className="data-card">
                 <CardContent className="p-0">
                   <div className="p-4">
                     <div className="flex justify-between items-start">
@@ -99,13 +90,10 @@ const AboutSection: React.FC = () => {
                     <p className="text-sm mt-3 text-gray-300">{exp.description}</p>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default AboutSection;
