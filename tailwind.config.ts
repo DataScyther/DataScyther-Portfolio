@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors for our data science theme
+				cyber: {
+					dark: "#1A1F2C",
+					darker: "#121520",
+					light: "#9b87f5",
+					accent: "#1EAEDB",
+					pink: "#D946EF",
+					blue: "#8B5CF6",
+				},
+			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				mono: ['JetBrains Mono', 'monospace'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +98,42 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'pulse-glow': {
+					'0%, 100%': {
+						opacity: '1',
+						filter: 'brightness(1)'
+					},
+					'50%': {
+						opacity: '0.8',
+						filter: 'brightness(1.3)'
+					}
+				},
+				'gradient-shift': {
+					'0%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
+					'100%': { backgroundPosition: '0% 50%' }
+				},
+				'spin-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 6s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+				'gradient-shift': 'gradient-shift 10s ease infinite',
+				'spin-slow': 'spin-slow 10s linear infinite'
 			}
 		}
 	},
