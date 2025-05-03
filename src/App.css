@@ -22,6 +22,11 @@
   animation: pulse-glow-pink 5s infinite alternate;
 }
 
+.glow-effect-cyan {
+  box-shadow: 0 0 15px rgba(78, 222, 229, 0.5);
+  animation: pulse-glow-cyan 3.5s infinite alternate;
+}
+
 @keyframes pulse-glow-blue {
   0% {
     box-shadow: 0 0 10px rgba(30, 174, 219, 0.3);
@@ -49,6 +54,15 @@
   }
 }
 
+@keyframes pulse-glow-cyan {
+  0% {
+    box-shadow: 0 0 10px rgba(78, 222, 229, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(78, 222, 229, 0.7);
+  }
+}
+
 /* Neon border effect */
 .neon-border {
   position: relative;
@@ -58,11 +72,11 @@
   content: '';
   position: absolute;
   inset: -2px;
-  background: linear-gradient(90deg, #9b87f5, #1EAEDB, #D946EF, #9b87f5);
-  background-size: 300% 100%;
+  background: linear-gradient(90deg, #9b87f5, #1EAEDB, #D946EF, #4edee5, #9b87f5);
+  background-size: 400% 100%;
   border-radius: inherit;
   z-index: -1;
-  animation: border-rotate 4s linear infinite;
+  animation: border-rotate 6s linear infinite;
 }
 
 @keyframes border-rotate {
@@ -70,6 +84,59 @@
     background-position: 0% 50%;
   }
   100% {
-    background-position: 300% 50%;
+    background-position: 400% 50%;
+  }
+}
+
+/* Cybernetic circuit lines */
+.cyber-circuit {
+  position: relative;
+}
+
+.cyber-circuit::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 0;
+  bottom: -5px;
+  left: 0;
+  background: linear-gradient(90deg, transparent, #1EAEDB, #4edee5, transparent);
+  transition: width 0.6s ease;
+}
+
+.cyber-circuit:hover::after {
+  width: 100%;
+}
+
+/* Holographic effect */
+.holographic {
+  position: relative;
+  overflow: hidden;
+}
+
+.holographic::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: hologram-sweep 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes hologram-sweep {
+  0% {
+    transform: rotate(30deg) translateX(-100%);
+  }
+  100% {
+    transform: rotate(30deg) translateX(100%);
   }
 }

@@ -7,7 +7,7 @@ import SkillsSection from '@/components/SkillsSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
-import ParticleBackground from '@/components/ParticleBackground';
+import FuturisticBackground from '@/components/FuturisticBackground';
 
 const Index = () => {
   useEffect(() => {
@@ -28,7 +28,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-cyber-dark text-white overflow-x-hidden">
-      <ParticleBackground />
+      <FuturisticBackground />
       <Navbar />
       <main>
         <HeroSection />
