@@ -1,3 +1,4 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,38 +6,70 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Futuristic glowing elements */
+.glow-effect-blue {
+  box-shadow: 0 0 15px rgba(30, 174, 219, 0.5);
+  animation: pulse-glow-blue 3s infinite alternate;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.glow-effect-purple {
+  box-shadow: 0 0 15px rgba(155, 135, 245, 0.5);
+  animation: pulse-glow-purple 4s infinite alternate;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.glow-effect-pink {
+  box-shadow: 0 0 15px rgba(217, 70, 239, 0.5);
+  animation: pulse-glow-pink 5s infinite alternate;
+}
+
+@keyframes pulse-glow-blue {
+  0% {
+    box-shadow: 0 0 10px rgba(30, 174, 219, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(30, 174, 219, 0.7);
   }
 }
 
-.card {
-  padding: 2em;
+@keyframes pulse-glow-purple {
+  0% {
+    box-shadow: 0 0 10px rgba(155, 135, 245, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(155, 135, 245, 0.7);
+  }
 }
 
-.read-the-docs {
-  color: #888;
+@keyframes pulse-glow-pink {
+  0% {
+    box-shadow: 0 0 10px rgba(217, 70, 239, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(217, 70, 239, 0.7);
+  }
+}
+
+/* Neon border effect */
+.neon-border {
+  position: relative;
+}
+
+.neon-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg, #9b87f5, #1EAEDB, #D946EF, #9b87f5);
+  background-size: 300% 100%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: border-rotate 4s linear infinite;
+}
+
+@keyframes border-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
 }

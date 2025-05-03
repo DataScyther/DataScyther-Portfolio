@@ -222,19 +222,21 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Add CSS for the typing animation */}
-      <style jsx>{`
-        @keyframes typing {
-          from { width: 0 }
-          to { width: 100% }
-        }
-        
-        .typing-effect {
-          display: inline-block;
-          overflow: hidden;
-          white-space: nowrap;
-          animation: typing 3s steps(40) 1s 1 normal both;
-        }
-      `}</style>
+      <style>
+        {`
+          @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+          }
+          
+          .typing-effect {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3s steps(40) 1s 1 normal both;
+          }
+        `}
+      </style>
     </section>
   );
 };
