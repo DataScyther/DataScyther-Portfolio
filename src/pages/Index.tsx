@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
@@ -10,32 +10,26 @@ import Footer from '@/components/Footer';
 import FuturisticBackground from '@/components/FuturisticBackground';
 
 const Index = () => {
-  useEffect(() => {
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href') as string);
-        if (target) {
-          window.scrollTo({
-            top: (target as HTMLElement).offsetTop - 80, // Adjust for navbar height
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-  }, []);
-
   return (
     <div className="min-h-screen bg-cyber-dark text-white overflow-x-hidden">
       <FuturisticBackground />
       <Navbar />
       <main>
-        <HeroSection />
-        <AboutSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <ContactSection />
+        <section id="home">
+          <HeroSection />
+        </section>
+        <section id="about">
+          <AboutSection />
+        </section>
+        <section id="skills">
+          <SkillsSection />
+        </section>
+        <section id="projects">
+          <ProjectsSection />
+        </section>
+        <section id="contact">
+          <ContactSection />
+        </section>
       </main>
       <Footer />
     </div>
