@@ -42,6 +42,10 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-cyber-dark text-foreground;
   }
@@ -68,5 +72,24 @@
   
   .glow-effect::before {
     @apply absolute content-[''] inset-0 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 -z-10 blur-xl opacity-40;
+  }
+
+  /* Animated highlight on hover */
+  .highlight-on-hover {
+    @apply relative overflow-hidden;
+  }
+  
+  .highlight-on-hover::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-cyber-accent transform scale-x-0 origin-bottom-left transition-transform duration-300;
+  }
+  
+  .highlight-on-hover:hover::after {
+    @apply transform scale-x-100;
+  }
+
+  /* Glass card effect */
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-xl;
   }
 }
