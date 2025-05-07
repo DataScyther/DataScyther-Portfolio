@@ -24,69 +24,78 @@ const ParticleBackground: React.FC = () => {
       canvas.height = window.innerHeight;
     };
 
-    // Initialize particles
+    // Initialize particles - fewer for minimalism
     const initParticles = () => {
       particles = [];
-      const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 25000); // Lower density
+      const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 40000); // Much lower density
 
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 1.5 + 0.5, // Smaller particles
-          speedX: (Math.random() - 0.5) * 0.3, // Slower particles
-          speedY: (Math.random() - 0.5) * 0.3,
-          opacity: Math.random() * 0.4 + 0.1, // More subtle opacity
+          size: Math.random() * 1 + 0.5, // Smaller particles
+          speedX: (Math.random() - 0.5) * 0.2, // Slower particles
+          speedY: (Math.random() - 0.5) * 0.2,
+          opacity: Math.random() * 0.3 + 0.1, // More subtle opacity
           color: i % 3 === 0 
-            ? 'rgba(155, 135, 245, 0.4)' // More transparent colors
+            ? 'rgba(155, 135, 245, 0.3)' // More transparent colors
             : i % 3 === 1 
-              ? 'rgba(30, 174, 219, 0.4)' 
-              : 'rgba(217, 70, 239, 0.4)',
+              ? 'rgba(30, 174, 219, 0.3)' 
+              : 'rgba(217, 70, 239, 0.3)',
         });
       }
     };
 
-    // Initialize grid lines
+    // Initialize futuristic grid - geometric pattern with larger spacing
     const initGridLines = () => {
       gridLines = [];
-      const spacing = 100; // Larger grid cells for minimalism
+      const spacing = 150; // Much larger grid cells for minimalism
       
-      // Only create a subset of grid lines for a more minimal look
-      // Horizontal lines
+      // Create a minimal geometric grid pattern
       for (let y = 0; y < canvas.height; y += spacing) {
         gridLines.push({
           startX: 0,
           startY: y,
           endX: canvas.width,
           endY: y,
-          color: 'rgba(155, 135, 245, 0.08)' // Much more subtle line color
+          color: 'rgba(155, 135, 245, 0.05)' // Very subtle line color
         });
       }
       
-      // Vertical lines
       for (let x = 0; x < canvas.width; x += spacing) {
         gridLines.push({
           startX: x,
           startY: 0,
           endX: x,
           endY: canvas.height,
-          color: 'rgba(155, 135, 245, 0.08)'
+          color: 'rgba(155, 135, 245, 0.05)'
+        });
+      }
+      
+      // Add diagonal lines for futuristic look - but minimal
+      for (let i = -canvas.height; i < canvas.width + canvas.height; i += spacing * 2) {
+        gridLines.push({
+          startX: i,
+          startY: 0,
+          endX: i + canvas.height,
+          endY: canvas.height,
+          color: 'rgba(30, 174, 219, 0.03)' // Very subtle diagonal line
         });
       }
     };
 
-    // Create a ripple effect
+    // Create a subtle ripple effect
     const createRipple = (x: number, y: number) => {
       ripples.push({
         x,
         y,
         radius: 0,
-        maxRadius: 100,
-        opacity: 0.4, // Lower opacity for subtlety
+        maxRadius: 80,
+        opacity: 0.3, // Lower opacity for subtlety
         color: Math.random() > 0.5 
-          ? 'rgba(30, 174, 219, 0.3)' 
-          : 'rgba(155, 135, 245, 0.3)',
-        speed: 1.5 // Slower ripples
+          ? 'rgba(30, 174, 219, 0.2)' 
+          : 'rgba(155, 135, 245, 0.2)',
+        speed: 1 // Slower ripples
       });
     };
 
@@ -94,13 +103,13 @@ const ParticleBackground: React.FC = () => {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Draw grid
+      // Draw minimalist grid
       drawGrid();
       
-      // Update and draw ripples
+      // Update and draw ripples - subtle interactive effect
       drawRipples();
       
-      // Update and draw particles
+      // Update and draw particles - minimal
       drawParticles();
       
       animationFrameId = requestAnimationFrame(draw);
@@ -119,9 +128,9 @@ const ParticleBackground: React.FC = () => {
           const distanceX = Math.abs(line.startX - pointerPosition.x) / canvas.width;
           const distanceY = Math.abs(line.startY - pointerPosition.y) / canvas.height;
           const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-          ctx.globalAlpha = Math.max(0.03, 1 - distance);
+          ctx.globalAlpha = Math.max(0.02, 0.1 - distance * 0.1); // Very subtle change
         } else {
-          ctx.globalAlpha = 0.1;
+          ctx.globalAlpha = 0.05;
         }
         
         ctx.stroke();
@@ -135,13 +144,13 @@ const ParticleBackground: React.FC = () => {
         
         // Update ripple
         ripple.radius += ripple.speed;
-        ripple.opacity -= 0.008; // Slower fade for subtle effect
+        ripple.opacity -= 0.005; // Slower fade for subtle effect
         
         // Draw ripple
         ctx.beginPath();
         ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
         ctx.strokeStyle = ripple.color;
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 0.5; // Thinner lines
         ctx.globalAlpha = ripple.opacity;
         ctx.stroke();
         ctx.globalAlpha = 1;
@@ -173,8 +182,8 @@ const ParticleBackground: React.FC = () => {
         ctx.fill();
         ctx.globalAlpha = 1;
 
-        // Connect nearby particles - but only to a few for minimalism
-        if (index % 3 === 0) { // Only connect every third particle
+        // Connect nearby particles - very selectively for minimalism
+        if (index % 5 === 0) { // Connect only every fifth particle
           connectParticles(particle, index);
         }
         
@@ -186,11 +195,11 @@ const ParticleBackground: React.FC = () => {
           
           if (distance < 150) {
             const force = (150 - distance) / 150;
-            particle.speedX += (dx / distance) * force * 0.01; // More subtle movement
-            particle.speedY += (dy / distance) * force * 0.01;
+            particle.speedX += (dx / distance) * force * 0.005; // More subtle movement
+            particle.speedY += (dy / distance) * force * 0.005;
             
             // Limit speed
-            const maxSpeed = 1.5;
+            const maxSpeed = 1;
             const currentSpeed = Math.sqrt(particle.speedX * particle.speedX + particle.speedY * particle.speedY);
             if (currentSpeed > maxSpeed) {
               particle.speedX = (particle.speedX / currentSpeed) * maxSpeed;
@@ -205,20 +214,20 @@ const ParticleBackground: React.FC = () => {
       });
     };
 
-    // Connect particles with lines if they're close enough
+    // Connect particles with very thin lines if they're close enough
     const connectParticles = (p: Particle, index: number) => {
-      for (let i = index + 1; i < particles.length; i += 2) { // Skip particles for minimalism
+      for (let i = index + 1; i < particles.length; i += 3) { // Skip more particles for minimalism
         if (i >= particles.length) break;
         
         const dx = p.x - particles[i].x;
         const dy = p.y - particles[i].y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         
-        if (distance < 120) { // Connection distance
+        if (distance < 100) { // Shorter connection distance
           ctx.beginPath();
           ctx.strokeStyle = p.color;
-          ctx.globalAlpha = 0.05 * (1 - distance / 120); // Very subtle connections
-          ctx.lineWidth = 0.5;
+          ctx.globalAlpha = 0.03 * (1 - distance / 100); // Extremely subtle connections
+          ctx.lineWidth = 0.3; // Very thin lines
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(particles[i].x, particles[i].y);
           ctx.stroke();
@@ -240,8 +249,8 @@ const ParticleBackground: React.FC = () => {
       setPointerPosition(pos);
       
       if (isPointerActive) {
-        // Occasionally create ripples during movement (but less frequent)
-        if (Math.random() > 0.96) {
+        // Occasionally create ripples during movement (but very infrequent)
+        if (Math.random() > 0.98) {
           createRipple(pos.x, pos.y);
         }
       }

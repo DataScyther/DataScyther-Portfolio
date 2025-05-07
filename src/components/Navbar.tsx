@@ -50,11 +50,17 @@ const Navbar: React.FC = () => {
     e.preventDefault();
     const targetSection = document.querySelector(sectionId);
     if (targetSection) {
+      // Improved smooth scrolling with better offset calculation
+      const navbarHeight = 80; // Approximate navbar height
+      const targetPosition = (targetSection as HTMLElement).getBoundingClientRect().top;
+      const offsetPosition = targetPosition + window.pageYOffset - navbarHeight;
+      
       window.scrollTo({
-        top: (targetSection as HTMLElement).offsetTop - 80,
+        top: offsetPosition,
         behavior: 'smooth'
       });
     }
+    
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }
