@@ -49,8 +49,8 @@ const Navbar: React.FC = () => {
   const scrollToSection = (sectionId: string, e: React.MouseEvent) => {
     e.preventDefault();
     const targetSection = document.querySelector(sectionId);
+    
     if (targetSection) {
-      // Improved smooth scrolling with better offset calculation
       const navbarHeight = 80; // Approximate navbar height
       const targetPosition = (targetSection as HTMLElement).getBoundingClientRect().top;
       const offsetPosition = targetPosition + window.pageYOffset - navbarHeight;
@@ -98,9 +98,8 @@ const Navbar: React.FC = () => {
             <Button 
               className="bg-gradient-to-r from-cyber-blue to-cyber-light text-white hover:opacity-90" 
               size="sm" 
-              onClick={(e) => scrollToSection('#contact', e)}
             >
-              <a href="#contact" onClick={(e) => e.preventDefault()}>Get in Touch</a>
+              <a href="#contact" onClick={(e) => scrollToSection('#contact', e)}>Get in Touch</a>
             </Button>
           </div>
 
@@ -130,9 +129,8 @@ const Navbar: React.FC = () => {
               <li>
                 <Button 
                   className="w-full bg-gradient-to-r from-cyber-blue to-cyber-light text-white hover:opacity-90 mt-2" 
-                  onClick={(e) => scrollToSection('#contact', e)}
                 >
-                  <a href="#contact" onClick={(e) => e.preventDefault()}>Get in Touch</a>
+                  <a href="#contact" onClick={(e) => scrollToSection('#contact', e)}>Get in Touch</a>
                 </Button>
               </li>
             </ul>

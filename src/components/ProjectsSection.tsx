@@ -35,6 +35,22 @@ const ProjectsSection: React.FC = () => {
     },
   ];
 
+  const scrollToSection = (sectionId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    const targetSection = document.querySelector(sectionId);
+    
+    if (targetSection) {
+      const navbarHeight = 80;
+      const targetPosition = (targetSection as HTMLElement).getBoundingClientRect().top;
+      const offsetPosition = targetPosition + window.pageYOffset - navbarHeight;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id="projects" className="py-20 relative">
       {/* Background decorative elements */}
@@ -114,8 +130,9 @@ const ProjectsSection: React.FC = () => {
             variant="outline"
             className="border-cyber-light text-cyber-light hover:bg-cyber-light/10"
             size="lg"
+            onClick={(e) => scrollToSection('#contact', e)}
           >
-            View All Projects
+            <a href="#contact">View All Projects</a>
           </Button>
         </div>
       </div>
