@@ -27,17 +27,21 @@ const ParticleBackground: React.FC = () => {
     // Initialize particles
     const initParticles = () => {
       particles = [];
-      const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 15000); // Adjust density
+      const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 25000); // Lower density
 
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 2 + 0.5,
-          speedX: (Math.random() - 0.5) * 0.5,
-          speedY: (Math.random() - 0.5) * 0.5,
-          opacity: Math.random() * 0.5 + 0.2,
-          color: i % 3 === 0 ? '#9b87f5' : i % 3 === 1 ? '#1EAEDB' : '#D946EF',
+          size: Math.random() * 1.5 + 0.5, // Smaller particles
+          speedX: (Math.random() - 0.5) * 0.3, // Slower particles
+          speedY: (Math.random() - 0.5) * 0.3,
+          opacity: Math.random() * 0.4 + 0.1, // More subtle opacity
+          color: i % 3 === 0 
+            ? 'rgba(155, 135, 245, 0.4)' // More transparent colors
+            : i % 3 === 1 
+              ? 'rgba(30, 174, 219, 0.4)' 
+              : 'rgba(217, 70, 239, 0.4)',
         });
       }
     };
@@ -45,8 +49,9 @@ const ParticleBackground: React.FC = () => {
     // Initialize grid lines
     const initGridLines = () => {
       gridLines = [];
-      const spacing = 50; // Grid cell size
+      const spacing = 100; // Larger grid cells for minimalism
       
+      // Only create a subset of grid lines for a more minimal look
       // Horizontal lines
       for (let y = 0; y < canvas.height; y += spacing) {
         gridLines.push({
@@ -54,7 +59,7 @@ const ParticleBackground: React.FC = () => {
           startY: y,
           endX: canvas.width,
           endY: y,
-          color: 'rgba(155, 135, 245, 0.15)'
+          color: 'rgba(155, 135, 245, 0.08)' // Much more subtle line color
         });
       }
       
@@ -65,7 +70,7 @@ const ParticleBackground: React.FC = () => {
           startY: 0,
           endX: x,
           endY: canvas.height,
-          color: 'rgba(155, 135, 245, 0.15)'
+          color: 'rgba(155, 135, 245, 0.08)'
         });
       }
     };
@@ -77,9 +82,11 @@ const ParticleBackground: React.FC = () => {
         y,
         radius: 0,
         maxRadius: 100,
-        opacity: 0.7,
-        color: Math.random() > 0.5 ? '#1EAEDB' : '#9b87f5',
-        speed: 2
+        opacity: 0.4, // Lower opacity for subtlety
+        color: Math.random() > 0.5 
+          ? 'rgba(30, 174, 219, 0.3)' 
+          : 'rgba(155, 135, 245, 0.3)',
+        speed: 1.5 // Slower ripples
       });
     };
 
@@ -87,7 +94,7 @@ const ParticleBackground: React.FC = () => {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Draw grid with perspective effect
+      // Draw grid
       drawGrid();
       
       // Update and draw ripples
@@ -107,14 +114,14 @@ const ParticleBackground: React.FC = () => {
         ctx.strokeStyle = line.color;
         ctx.lineWidth = 0.5;
         
-        // Add perspective distortion if pointer is active
+        // Add subtle perspective distortion if pointer is active
         if (isPointerActive) {
           const distanceX = Math.abs(line.startX - pointerPosition.x) / canvas.width;
           const distanceY = Math.abs(line.startY - pointerPosition.y) / canvas.height;
           const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-          ctx.globalAlpha = Math.max(0.05, 1 - distance);
+          ctx.globalAlpha = Math.max(0.03, 1 - distance);
         } else {
-          ctx.globalAlpha = 0.15;
+          ctx.globalAlpha = 0.1;
         }
         
         ctx.stroke();
@@ -128,13 +135,13 @@ const ParticleBackground: React.FC = () => {
         
         // Update ripple
         ripple.radius += ripple.speed;
-        ripple.opacity -= 0.01;
+        ripple.opacity -= 0.008; // Slower fade for subtle effect
         
         // Draw ripple
         ctx.beginPath();
         ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
         ctx.strokeStyle = ripple.color;
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = 1;
         ctx.globalAlpha = ripple.opacity;
         ctx.stroke();
         ctx.globalAlpha = 1;
@@ -166,10 +173,12 @@ const ParticleBackground: React.FC = () => {
         ctx.fill();
         ctx.globalAlpha = 1;
 
-        // Connect nearby particles
-        connectParticles(particle, index);
+        // Connect nearby particles - but only to a few for minimalism
+        if (index % 3 === 0) { // Only connect every third particle
+          connectParticles(particle, index);
+        }
         
-        // Apply influence from pointer position
+        // Apply subtle influence from pointer position
         if (isPointerActive) {
           const dx = pointerPosition.x - particle.x;
           const dy = pointerPosition.y - particle.y;
@@ -177,11 +186,11 @@ const ParticleBackground: React.FC = () => {
           
           if (distance < 150) {
             const force = (150 - distance) / 150;
-            particle.speedX += (dx / distance) * force * 0.02;
-            particle.speedY += (dy / distance) * force * 0.02;
+            particle.speedX += (dx / distance) * force * 0.01; // More subtle movement
+            particle.speedY += (dy / distance) * force * 0.01;
             
             // Limit speed
-            const maxSpeed = 2;
+            const maxSpeed = 1.5;
             const currentSpeed = Math.sqrt(particle.speedX * particle.speedX + particle.speedY * particle.speedY);
             if (currentSpeed > maxSpeed) {
               particle.speedX = (particle.speedX / currentSpeed) * maxSpeed;
@@ -198,7 +207,9 @@ const ParticleBackground: React.FC = () => {
 
     // Connect particles with lines if they're close enough
     const connectParticles = (p: Particle, index: number) => {
-      for (let i = index + 1; i < particles.length; i++) {
+      for (let i = index + 1; i < particles.length; i += 2) { // Skip particles for minimalism
+        if (i >= particles.length) break;
+        
         const dx = p.x - particles[i].x;
         const dy = p.y - particles[i].y;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -206,7 +217,7 @@ const ParticleBackground: React.FC = () => {
         if (distance < 120) { // Connection distance
           ctx.beginPath();
           ctx.strokeStyle = p.color;
-          ctx.globalAlpha = 0.1 * (1 - distance / 120);
+          ctx.globalAlpha = 0.05 * (1 - distance / 120); // Very subtle connections
           ctx.lineWidth = 0.5;
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(particles[i].x, particles[i].y);
@@ -225,12 +236,12 @@ const ParticleBackground: React.FC = () => {
     };
 
     const handlePointerMove = (e: TouchEvent | MouseEvent) => {
+      const pos = getPointerPosition(e);
+      setPointerPosition(pos);
+      
       if (isPointerActive) {
-        const pos = getPointerPosition(e);
-        setPointerPosition(pos);
-        
-        // Occasionally create ripples during movement
-        if (Math.random() > 0.92) {
+        // Occasionally create ripples during movement (but less frequent)
+        if (Math.random() > 0.96) {
           createRipple(pos.x, pos.y);
         }
       }
