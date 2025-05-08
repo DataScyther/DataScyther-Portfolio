@@ -23,8 +23,8 @@ const HeroSection: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center relative pt-16 overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute top-40 -right-20 w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 -left-20 w-80 h-80 bg-cyber-pink/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-40 -right-20 w-96 h-96 bg-cyber-blue/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 -left-20 w-80 h-80 bg-cyber-pink/20 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="flex flex-col md:flex-row items-center">
