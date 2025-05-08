@@ -130,4 +130,129 @@
   .cybr-btn:hover::before {
     transform: translateX(0);
   }
+  
+  /* Holographic effect for cards and containers */
+  .holographic-card {
+    @apply relative overflow-hidden bg-cyber-darker/50 backdrop-blur-md border border-cyber-light/20 rounded-xl;
+  }
+  
+  .holographic-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-cyber-light/5 via-cyber-accent/5 to-cyber-pink/5;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .holographic-card:hover::before {
+    opacity: 1;
+  }
+  
+  .holographic-card::after {
+    content: '';
+    @apply absolute -inset-[200%] w-[400%] h-[400%];
+    background: conic-gradient(
+      from 90deg at 50% 50%,
+      rgba(155, 135, 245, 0) 50%,
+      rgba(155, 135, 245, 0.1) 50.1%,
+      rgba(30, 174, 219, 0.1) 50.2%,
+      rgba(30, 174, 219, 0) 50.3%
+    );
+    animation: rotate 8s linear infinite;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .holographic-card:hover::after {
+    opacity: 1;
+  }
+  
+  /* Data flow effect */
+  .data-flow {
+    @apply relative overflow-hidden;
+  }
+  
+  .data-flow::before {
+    content: '';
+    @apply absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-cyber-light/0 via-cyber-light/40 to-cyber-light/0;
+    animation: dataflow 2s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .data-flow:hover::before {
+    opacity: 1;
+  }
+  
+  /* Futuristic border glow */
+  .border-glow {
+    @apply relative;
+    box-shadow: 0 0 0 1px rgba(155, 135, 245, 0.2),
+                0 0 0 4px rgba(155, 135, 245, 0.05),
+                0 0 10px rgba(155, 135, 245, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .border-glow:hover {
+    box-shadow: 0 0 0 1px rgba(155, 135, 245, 0.4),
+                0 0 0 4px rgba(155, 135, 245, 0.1),
+                0 0 15px rgba(155, 135, 245, 0.2);
+  }
+  
+  /* Cyber grid background */
+  .cyber-grid {
+    @apply relative;
+    background-image: 
+      linear-gradient(to right, rgba(155, 135, 245, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(155, 135, 245, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  /* Digital noise overlay */
+  .digital-noise {
+    @apply relative overflow-hidden;
+  }
+  
+  .digital-noise::before {
+    content: '';
+    @apply absolute inset-0 opacity-10 pointer-events-none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dataflow {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.6;
+  }
 }

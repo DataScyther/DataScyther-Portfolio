@@ -277,8 +277,9 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
       
-      {/* Add keyframes for scanning effect */}
-      <style jsx>{`
+      {/* Add keyframes directly using raw CSS */}
+      <style>
+        {`
         @keyframes scanline {
           0% {
             transform: translateY(-100%);
@@ -298,7 +299,8 @@ const HeroSection: React.FC = () => {
             opacity: 0.6;
           }
         }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 };
