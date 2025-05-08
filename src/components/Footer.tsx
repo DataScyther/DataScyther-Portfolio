@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
                 <a 
                   href="#home" 
                   onClick={(e) => scrollToSection('#home', e)}
-                  className="text-sm text-gray-300 hover:text-white"
+                  className="text-sm text-gray-300 hover:text-white cyber-circuit"
                 >
                   Home
                 </a>
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
                 <a 
                   href="#about" 
                   onClick={(e) => scrollToSection('#about', e)}
-                  className="text-sm text-gray-300 hover:text-white"
+                  className="text-sm text-gray-300 hover:text-white cyber-circuit"
                 >
                   About
                 </a>
@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
                 <a 
                   href="#projects" 
                   onClick={(e) => scrollToSection('#projects', e)}
-                  className="text-sm text-gray-300 hover:text-white"
+                  className="text-sm text-gray-300 hover:text-white cyber-circuit"
                 >
                   Projects
                 </a>
@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
                 <a 
                   href="#contact" 
                   onClick={(e) => scrollToSection('#contact', e)}
-                  className="text-sm text-gray-300 hover:text-white"
+                  className="text-sm text-gray-300 hover:text-white cyber-circuit"
                 >
                   Contact
                 </a>
