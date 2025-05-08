@@ -92,4 +92,42 @@
   .glass-card {
     @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-xl;
   }
+  
+  /* Cybernetic circuit lines */
+  .circuit-lines {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .circuit-lines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(90deg, rgba(155, 135, 245, 0) 0%, rgba(155, 135, 245, 0.05) 50%, rgba(155, 135, 245, 0) 100%),
+      linear-gradient(0deg, rgba(30, 174, 219, 0) 0%, rgba(30, 174, 219, 0.05) 50%, rgba(30, 174, 219, 0) 100%);
+    background-size: 30px 30px;
+    opacity: 0.5;
+    z-index: -1;
+  }
+  
+  /* Cyberpunk button effect */
+  .cybr-btn {
+    @apply relative inline-block p-4 overflow-hidden transition-all duration-500;
+    clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+  }
+  
+  .cybr-btn::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-cyber-light/20 to-cyber-accent/20;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .cybr-btn:hover::before {
+    transform: translateX(0);
+  }
 }
