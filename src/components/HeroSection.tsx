@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Code, Database, Brain, Sparkles } from 'lucide-react';
+import FuturisticBackground from './FuturisticBackground';
 
 const HeroSection: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -10,7 +11,6 @@ const HeroSection: React.FC = () => {
   const imageRef = useRef<HTMLDivElement>(null);
   const textContainerRef = useRef<HTMLDivElement>(null);
   
-  // Handle parallax effect and interactive elements
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!heroRef.current) return;
@@ -72,7 +72,7 @@ const HeroSection: React.FC = () => {
     const targetSection = document.querySelector(sectionId);
     
     if (targetSection) {
-      const navbarHeight = 80; // Approximate navbar height
+      const navbarHeight = 80;
       const targetPosition = (targetSection as HTMLElement).getBoundingClientRect().top;
       const offsetPosition = targetPosition + window.pageYOffset - navbarHeight;
       
@@ -83,7 +83,7 @@ const HeroSection: React.FC = () => {
     }
   };
 
-  // Create reactive glowing effect that follows cursor
+  // Reactive glowing effect that follows cursor
   const glowStyles = {
     background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, 
                 rgba(155, 135, 245, 0.15) 0%, 
@@ -96,31 +96,12 @@ const HeroSection: React.FC = () => {
   return (
     <div 
       ref={heroRef}
-      className="min-h-screen flex items-center relative pt-16 overflow-hidden"
+      className="min-h-screen relative overflow-hidden pt-16"
     >
+      <FuturisticBackground />
+      
       {/* Interactive background elements */}
       <div className="absolute top-0 left-0 w-full h-full z-0" style={glowStyles}></div>
-      
-      <div className="absolute top-40 -right-20 w-96 h-96 bg-cyber-blue/30 rounded-full blur-3xl animate-pulse-glow"></div>
-      <div className="absolute bottom-20 -left-20 w-80 h-80 bg-cyber-pink/30 rounded-full blur-3xl animate-pulse-glow"></div>
-      <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-cyber-accent/20 rounded-full blur-3xl"></div>
-      
-      {/* Geometric cyberpunk elements */}
-      <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
-        {/* Circuit lines */}
-        <div className="absolute top-20 left-10 w-40 h-[1px] bg-cyber-light/30 rotate-45"></div>
-        <div className="absolute top-40 right-20 w-60 h-[1px] bg-cyber-accent/30 -rotate-30"></div>
-        <div className="absolute bottom-40 left-1/4 w-80 h-[1px] bg-cyber-pink/30 rotate-12"></div>
-        
-        {/* Tech nodes */}
-        <div className="absolute top-20 left-10 w-2 h-2 rounded-full bg-cyber-light animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-3 h-3 rounded-full bg-cyber-accent animate-pulse"></div>
-        <div className="absolute bottom-40 left-1/4 w-2 h-2 rounded-full bg-cyber-pink animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/3 w-4 h-4 rounded-full bg-cyber-blue/70 animate-pulse"></div>
-        
-        {/* Digital grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(155,135,245,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(155,135,245,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-30"></div>
-      </div>
       
       <div className="container mx-auto px-6 py-16 relative z-10">
         <div className="flex flex-col md:flex-row items-center">
@@ -276,31 +257,6 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
       </div>
-      
-      {/* Add keyframes directly using raw CSS */}
-      <style>
-        {`
-        @keyframes scanline {
-          0% {
-            transform: translateY(-100%);
-          }
-          100% {
-            transform: translateY(1000%);
-          }
-        }
-        
-        @keyframes scrollPulse {
-          0%, 100% {
-            transform: translateY(0);
-            opacity: 1;
-          }
-          50% {
-            transform: translateY(10px);
-            opacity: 0.6;
-          }
-        }
-        `}
-      </style>
     </div>
   );
 };

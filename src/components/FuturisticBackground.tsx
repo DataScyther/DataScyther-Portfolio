@@ -69,14 +69,14 @@ const FuturisticBackground: React.FC = () => {
     // Initialize particles
     const initParticles = () => {
       particles = [];
-      const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 10000); // Increased density
+      const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 10000);
       
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           size: Math.random() * 2 + 0.5,
-          speedX: (Math.random() - 0.5) * 0.8, // Faster particles
+          speedX: (Math.random() - 0.5) * 0.8,
           speedY: (Math.random() - 0.5) * 0.8,
           opacity: Math.random() * 0.6 + 0.3,
           color: i % 4 === 0 ? '#9b87f5' : i % 4 === 1 ? '#1EAEDB' : i % 4 === 2 ? '#D946EF' : '#4edee5',
@@ -332,7 +332,7 @@ const FuturisticBackground: React.FC = () => {
         const dy = p.y - particles[i].y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         
-        if (distance < 150) { // Increased connection distance
+        if (distance < 150) {
           ctx.beginPath();
           ctx.strokeStyle = p.color;
           ctx.globalAlpha = 0.15 * (1 - distance / 150);
