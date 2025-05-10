@@ -27,16 +27,16 @@ const HeroSection: React.FC = () => {
       
       // Apply subtle tilt effect to the image
       if (imageRef.current) {
-        const imgX = ((x / rect.width) * 2 - 1) * 5;
-        const imgY = ((y / rect.height) * 2 - 1) * 5;
+        const imgX = ((x / rect.width) * 2 - 1) * 4; // Reduced tilt intensity
+        const imgY = ((y / rect.height) * 2 - 1) * 4; // Reduced tilt intensity
         
         imageRef.current.style.transform = `perspective(1000px) rotateY(${imgX}deg) rotateX(${-imgY}deg) scale3d(1.02, 1.02, 1.02)`;
       }
       
       // Apply subtle movement to text
       if (textContainerRef.current) {
-        const textX = ((x / rect.width) * 2 - 1) * 10;
-        const textY = ((y / rect.height) * 2 - 1) * 5;
+        const textX = ((x / rect.width) * 2 - 1) * 8; // Reduced movement intensity
+        const textY = ((y / rect.height) * 2 - 1) * 4; // Reduced movement intensity
         
         textContainerRef.current.style.transform = `translate(${textX}px, ${textY}px)`;
       }
@@ -80,7 +80,7 @@ const HeroSection: React.FC = () => {
       <HeroGlowEffect mousePosition={mousePosition} isHovering={isHovering} />
       
       <div className="container mx-auto px-6 py-16 relative z-10">
-        <div className="flex flex-col md:flex-row items-center">
+        <div className="flex flex-col md:flex-row items-center justify-between">
           <HeroText textContainerRef={textContainerRef} />
           <HeroInteractiveImage imageRef={imageRef} />
         </div>

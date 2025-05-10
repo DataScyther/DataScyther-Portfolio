@@ -22,20 +22,17 @@ const HeroText: React.FC<HeroTextProps> = ({ textContainerRef }) => {
         </span>
       </div>
       
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 relative">
-        <div className="absolute -left-4 top-0 w-10 h-10 border-l-2 border-t-2 border-cyber-accent/50"></div>
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 tracking-tight">
         <span className="gradient-text drop-shadow-[0_5px_15px_rgba(155,135,245,0.3)]">Data Science</span> & <span className="gradient-text drop-shadow-[0_5px_15px_rgba(30,174,219,0.3)]">ML Engineer</span>
         <br />Turning Data into <span className="gradient-text relative inline-block">
           Insights
           <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-purple-400 via-cyan-400 to-blue-500 animate-pulse"></span>
         </span>
-        <div className="absolute -right-4 bottom-0 w-10 h-10 border-r-2 border-b-2 border-cyber-pink/50"></div>
       </h1>
       
-      <p className="text-lg text-gray-300 mb-8 max-w-xl glass-card relative z-10 p-5 backdrop-blur-md bg-cyber-darker/40 rounded-lg border border-cyber-light/10">
+      <p className="text-lg text-gray-300 mb-8 max-w-xl glass-card p-5 backdrop-blur-md bg-cyber-darker/40 rounded-lg border border-cyber-light/10">
         I build machine learning models and data-driven applications 
         that help businesses make smarter decisions and create innovative products.
-        <span className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-cyber-light/5 to-transparent rounded-lg pointer-events-none"></span>
       </p>
       
       <div className="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap sm:gap-4">
@@ -61,9 +58,6 @@ const HeroText: React.FC<HeroTextProps> = ({ textContainerRef }) => {
             Contact Me
             <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
           </a>
-          
-          {/* Button border glow effect */}
-          <div className="absolute inset-0 border border-cyber-light/50 rounded-md opacity-0 group-hover:opacity-100 scale-105 group-hover:scale-100 transition-all duration-300"></div>
         </Button>
       </div>
       
