@@ -44,10 +44,15 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed header */
   }
 
   body {
-    @apply bg-cyber-dark text-foreground;
+    @apply bg-cyber-dark text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium tracking-tight;
   }
 
   .gradient-text {
@@ -91,5 +96,46 @@
   /* Glass card effect */
   .glass-card {
     @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-xl;
+  }
+  
+  /* Section transitions */
+  section {
+    @apply transition-opacity duration-500;
+  }
+
+  /* Reduced animation intensity */
+  .animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+    animation-duration: 6s;
+  }
+
+  /* Smoother animations */
+  @keyframes pulse-glow {
+    0% {
+      opacity: 0.5;
+      filter: brightness(0.8);
+    }
+    50% {
+      opacity: 1;
+      filter: brightness(1.2);
+    }
+    100% {
+      opacity: 0.5;
+      filter: brightness(0.8);
+    }
+  }
+
+  /* Fade-in animation for section content */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

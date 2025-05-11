@@ -37,16 +37,16 @@ const SkillsSection: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-cyber-darker relative overflow-hidden">
-      {/* Animated background elements */}
+    <section id="skills" className="py-24 bg-cyber-darker relative overflow-hidden">
+      {/* Animated background elements - reduced intensity */}
       <div className="absolute inset-0" style={{ zIndex: 0 }}>
-        <div className="absolute top-10 left-10 w-64 h-64 bg-cyber-light/5 rounded-full blur-3xl animate-pulse-glow"></div>
-        <div className="absolute bottom-10 right-10 w-64 h-64 bg-cyber-accent/5 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-10 left-10 w-64 h-64 bg-cyber-light/3 rounded-full blur-3xl animate-pulse-glow"></div>
+        <div className="absolute bottom-10 right-10 w-64 h-64 bg-cyber-accent/3 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '2s' }}></div>
       </div>
       
-      {/* Binary code background effect */}
-      <div className="absolute inset-0 opacity-5 select-none pointer-events-none overflow-hidden">
-        {[...Array(10)].map((_, i) => (
+      {/* Binary code background effect - more subtle */}
+      <div className="absolute inset-0 opacity-3 select-none pointer-events-none overflow-hidden">
+        {[...Array(8)].map((_, i) => (
           <div 
             key={i}
             className="text-xs md:text-sm font-mono text-cyber-light"
@@ -55,7 +55,7 @@ const SkillsSection: React.FC = () => {
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
               transform: 'rotate(90deg)',
-              opacity: Math.random() * 0.5 + 0.5,
+              opacity: Math.random() * 0.3 + 0.2,
             }}
           >
             {'010101001010101010010101'.split('').map((char, idx) => (
@@ -68,9 +68,9 @@ const SkillsSection: React.FC = () => {
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-14">
+        <div className="text-left max-w-4xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">Technical Expertise</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-400">
             My technical toolkit combines data science fundamentals with cutting-edge technologies to deliver impactful solutions.
           </p>
         </div>
@@ -104,14 +104,14 @@ const SkillsSection: React.FC = () => {
           ))}
         </div>
         
-        <div className="mt-16 text-center">
-          <div className="inline-block cyber-border p-1">
+        <div className="mt-16 flex justify-center">
+          <div className="inline-block cyber-border p-1 max-w-xl w-full">
             <div className="rounded-lg bg-cyber-darker p-5">
-              <h3 className="text-xl font-medium text-cyber-light mb-3">Proficiency Level</h3>
-              <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 text-sm">
+              <h3 className="text-xl font-medium text-cyber-light mb-3 text-left">Proficiency Level</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 text-sm">
                 {['Python', 'Machine Learning', 'Data Analysis', 'AWS', 'SQL'].map((skill, i) => (
                   <div key={i} className="space-y-2">
-                    <p className="text-white">{skill}</p>
+                    <p className="text-white text-left">{skill}</p>
                     <div className="h-1.5 bg-cyber-darker/50 rounded-full overflow-hidden">
                       <div 
                         className="h-full bg-gradient-to-r from-cyber-light to-cyber-accent" 

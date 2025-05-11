@@ -18,16 +18,16 @@ const Index = () => {
         <section id="home">
           <HeroSection />
         </section>
-        <section id="about">
+        <section id="about" className="scroll-mt-20">
           <AboutSection />
         </section>
-        <section id="skills">
+        <section id="skills" className="scroll-mt-20">
           <SkillsSection />
         </section>
-        <section id="projects">
+        <section id="projects" className="scroll-mt-20">
           <ProjectsSection />
         </section>
-        <section id="contact">
+        <section id="contact" className="scroll-mt-20">
           <ContactSection />
         </section>
       </main>

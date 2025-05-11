@@ -35,13 +35,14 @@ const ProjectsSection: React.FC = () => {
     },
   ];
 
+  // Function to handle scrolling to a section
   const scrollToSection = (sectionId: string, e: React.MouseEvent) => {
     e.preventDefault();
-    const targetSection = document.querySelector(sectionId);
+    const section = document.getElementById(sectionId);
     
-    if (targetSection) {
+    if (section) {
       const navbarHeight = 80;
-      const targetPosition = (targetSection as HTMLElement).getBoundingClientRect().top;
+      const targetPosition = section.getBoundingClientRect().top;
       const offsetPosition = targetPosition + window.pageYOffset - navbarHeight;
       
       window.scrollTo({
@@ -52,15 +53,15 @@ const ProjectsSection: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-20 relative">
-      {/* Background decorative elements */}
-      <div className="absolute top-40 -left-40 w-80 h-80 bg-cyber-blue/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 -right-20 w-80 h-80 bg-cyber-pink/5 rounded-full blur-3xl"></div>
+    <section id="projects" className="py-24 relative">
+      {/* Background decorative elements - more subtle */}
+      <div className="absolute top-40 -left-40 w-80 h-80 bg-cyber-blue/3 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 -right-20 w-80 h-80 bg-cyber-pink/3 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-6">
-        <div className="text-center mb-14">
+        <div className="text-left max-w-4xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">Featured Projects</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-400">
             A showcase of my work in data science, visualization, and web development, demonstrating practical applications of my technical skills.
           </p>
         </div>
@@ -76,7 +77,7 @@ const ProjectsSection: React.FC = () => {
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute top-3 left-3 bg-cyber-darker/80 p-2 rounded-md z-20">
                   {project.icon}
@@ -125,14 +126,14 @@ const ProjectsSection: React.FC = () => {
           ))}
         </div>
         
-        <div className="mt-12 text-center">
+        <div className="mt-14 flex justify-center">
           <Button 
             variant="outline"
             className="border-cyber-light text-cyber-light hover:bg-cyber-light/10"
             size="lg"
             onClick={(e) => scrollToSection('#contact', e)}
           >
-            <a href="#contact">View All Projects</a>
+            <a href="#contact">Contact About Projects</a>
           </Button>
         </div>
       </div>
