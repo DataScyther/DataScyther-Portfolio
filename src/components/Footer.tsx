@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-5 md:mb-0">
-            <div className="text-xl font-bold gradient-text mb-1">NK<span className="text-sm">.DataScienceLab</span></div>
+            <div className="text-xl font-bold gradient-text mb-1">NK<span className="text-sm">.DataScyther</span></div>
             <p className="text-gray-400 text-sm">
               Transforming data into insights
             </p>
