@@ -54,6 +54,21 @@ const HeroSection: React.FC = () => {
     ));
   };
 
+  // Function to handle scrolling to a section
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const navbarHeight = 80; // Approximate navbar height
+      const targetPosition = section.getBoundingClientRect().top;
+      const offsetPosition = targetPosition + window.pageYOffset - navbarHeight;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section 
       ref={containerRef}
@@ -168,6 +183,7 @@ const HeroSection: React.FC = () => {
                 )}
                 onMouseEnter={() => setActiveButton('projects')}
                 onMouseLeave={() => setActiveButton(null)}
+                onClick={() => scrollToSection('projects')}
               >
                 <span className="relative z-10 flex items-center">
                   <Star className={cn(
@@ -187,6 +203,7 @@ const HeroSection: React.FC = () => {
                 )}
                 onMouseEnter={() => setActiveButton('contact')}
                 onMouseLeave={() => setActiveButton(null)}
+                onClick={() => scrollToSection('contact')}
               >
                 <span className="relative z-10 flex items-center">
                   <CircleDot className={cn(
@@ -208,12 +225,7 @@ const HeroSection: React.FC = () => {
           "absolute bottom-8 animate-bounce cursor-pointer transition-all duration-300",
           isHovering ? "text-white scale-110" : "text-cyber-light/50"
         )}
-        onClick={() => {
-          const aboutSection = document.getElementById('about');
-          if (aboutSection) {
-            aboutSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        }}
+        onClick={() => scrollToSection('about')}
       >
         <div className="flex flex-col items-center">
           <span className="text-sm mb-2 opacity-80">Scroll Down</span>
