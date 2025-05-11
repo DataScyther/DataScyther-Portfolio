@@ -8,7 +8,7 @@ const ProjectsSection: React.FC = () => {
   const projects = [
     {
       title: "UPI QR Code Generator",
-      description: "A web application that generates UPI QR codes for seamless payments, supporting multiple UPI providers and custom payment amounts.",
+      description: "A web application that generates UPI QR codes for seamless payments.",
       tags: ["JavaScript", "React", "QR Code API", "Payment Integration"],
       image: "https://placehold.co/600x400/1A1F2C/9b87f5?text=QR+Generator",
       githubUrl: "#",
@@ -17,7 +17,7 @@ const ProjectsSection: React.FC = () => {
     },
     {
       title: "4D Musical Spheres with Ripple Effect",
-      description: "An interactive 3D visualization that transforms music into dynamic spheres with ripple effects, creating a synesthetic experience.",
+      description: "An interactive 3D visualization that transforms music into dynamic spheres.",
       tags: ["Three.js", "WebAudio API", "JavaScript", "3D Visualization"],
       image: "https://placehold.co/600x400/1A1F2C/1EAEDB?text=3D+Visualization",
       githubUrl: "#",
@@ -26,7 +26,7 @@ const ProjectsSection: React.FC = () => {
     },
     {
       title: "Sentiment Analysis Dashboard",
-      description: "A machine learning-powered dashboard that analyzes customer reviews and social media mentions to extract sentiment and key insights.",
+      description: "A machine learning-powered dashboard that analyzes customer reviews.",
       tags: ["Python", "NLP", "BERT", "ReactJS", "D3.js"],
       image: "https://placehold.co/600x400/1A1F2C/D946EF?text=Sentiment+Analysis",
       githubUrl: "#",
@@ -53,20 +53,20 @@ const ProjectsSection: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-24 relative">
-      {/* Background decorative elements - more subtle */}
+    <section id="projects" className="py-20 relative">
+      {/* Simplified background elements */}
       <div className="absolute top-40 -left-40 w-80 h-80 bg-cyber-blue/3 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 -right-20 w-80 h-80 bg-cyber-pink/3 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-6">
-        <div className="text-left max-w-4xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">Featured Projects</h2>
+        <div className="text-left max-w-4xl mx-auto mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-3">Featured Projects</h2>
           <p className="text-gray-400">
-            A showcase of my work in data science, visualization, and web development, demonstrating practical applications of my technical skills.
+            A showcase of my work in data science, visualization, and web development.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <Card 
               key={index} 
@@ -77,17 +77,17 @@ const ProjectsSection: React.FC = () => {
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-3 left-3 bg-cyber-darker/80 p-2 rounded-md z-20">
                   {project.icon}
                 </div>
               </div>
               
-              <CardContent className="flex-grow p-6">
+              <CardContent className="flex-grow p-5">
                 <h3 className="text-xl font-medium mb-2 text-white">{project.title}</h3>
-                <p className="text-gray-400 text-sm mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mt-4">
+                <p className="text-gray-400 text-sm mb-3">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, tagIndex) => (
                     <span 
                       key={tagIndex}
@@ -99,7 +99,7 @@ const ProjectsSection: React.FC = () => {
                 </div>
               </CardContent>
               
-              <CardFooter className="border-t border-cyber-light/10 p-4 pt-4 space-x-3">
+              <CardFooter className="border-t border-cyber-light/10 p-4 pt-3 space-x-3">
                 <Button 
                   variant="outline"
                   size="sm" 
@@ -126,12 +126,11 @@ const ProjectsSection: React.FC = () => {
           ))}
         </div>
         
-        <div className="mt-14 flex justify-center">
+        <div className="mt-12 flex justify-center">
           <Button 
             variant="outline"
             className="border-cyber-light text-cyber-light hover:bg-cyber-light/10"
-            size="lg"
-            onClick={(e) => scrollToSection('#contact', e)}
+            onClick={(e) => scrollToSection('contact', e)}
           >
             <a href="#contact">Contact About Projects</a>
           </Button>

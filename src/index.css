@@ -60,15 +60,15 @@
   }
 
   .cyber-border {
-    @apply border border-cyber-light/20 rounded-lg shadow-[0_0_15px_rgba(155,135,245,0.15)];
+    @apply border border-cyber-light/20 rounded-lg shadow-[0_0_10px_rgba(155,135,245,0.12)];
   }
   
   .data-card {
-    @apply cyber-border p-6 bg-gradient-to-br from-cyber-darker to-cyber-dark hover:from-cyber-dark hover:to-cyber-darker transition-all duration-300;
+    @apply cyber-border p-1 bg-gradient-to-br from-cyber-darker to-cyber-dark hover:from-cyber-dark hover:to-cyber-darker transition-all duration-300;
   }
   
   .neo-brutalism {
-    @apply border-2 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] rounded-lg transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_rgba(0,0,0,1)];
+    @apply border-2 border-black shadow-[3px_3px_0_0_rgba(0,0,0,1)] rounded-lg transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_0_rgba(0,0,0,1)];
   }
 
   .glow-effect {
@@ -76,10 +76,10 @@
   }
   
   .glow-effect::before {
-    @apply absolute content-[''] inset-0 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 -z-10 blur-xl opacity-40;
+    @apply absolute content-[''] inset-0 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 -z-10 blur-lg opacity-30;
   }
 
-  /* Animated highlight on hover */
+  /* Simplified hover effect */
   .highlight-on-hover {
     @apply relative overflow-hidden;
   }
@@ -95,7 +95,7 @@
 
   /* Glass card effect */
   .glass-card {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-xl;
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-lg;
   }
   
   /* Section transitions */
@@ -105,31 +105,30 @@
 
   /* Reduced animation intensity */
   .animate-pulse-glow {
-    animation: pulse-glow 4s ease-in-out infinite;
-    animation-duration: 6s;
+    animation: pulse-glow 5s ease-in-out infinite;
   }
 
   /* Smoother animations */
   @keyframes pulse-glow {
     0% {
       opacity: 0.5;
-      filter: brightness(0.8);
+      filter: brightness(0.9);
     }
     50% {
-      opacity: 1;
-      filter: brightness(1.2);
+      opacity: 0.8;
+      filter: brightness(1.1);
     }
     100% {
       opacity: 0.5;
-      filter: brightness(0.8);
+      filter: brightness(0.9);
     }
   }
 
   /* Fade-in animation for section content */
   .fade-in {
     opacity: 0;
-    transform: translateY(10px);
-    animation: fadeIn 0.8s ease-out forwards;
+    transform: translateY(8px);
+    animation: fadeIn 0.7s ease-out forwards;
   }
   
   @keyframes fadeIn {
