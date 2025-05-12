@@ -61,8 +61,8 @@ const AboutSection: React.FC = () => {
                     <p className="text-sm text-gray-400">Amazon Web Services</p>
                   </div>
                   <div>
-                    <h4 className="text-md font-medium">Machine Learning Specialization</h4>
-                    <p className="text-sm text-gray-400">Stanford University</p>
+                    
+                    
                   </div>
                   <div>
                     <h4 className="text-md font-medium">Data Science Professional</h4>
